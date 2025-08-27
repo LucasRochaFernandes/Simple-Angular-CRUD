@@ -1,14 +1,29 @@
-<mat-toolbar color="primary">
-  <span>Cadastro de Clientes</span>
-  <span class="spacer"></span>
-  <a routerLink="/cadastro">
-    <mat-icon fontIcon="feed"></mat-icon>
-    Cadastro</a
-  >
-  <a routerLink="/consulta">
-    <mat-icon fontIcon="search"></mat-icon>
-    Consulta</a
-  >
+<mat-toolbar color="primary" fxLayoutAlign="space-between center">
+  <div fxLayout="row" fxLayoutAlign="center" class="w-full">
+    <span class="spacer-left"></span>
+    <span>Cadastro de Clientes</span>
+    <span class="space-middle"></span>
+    <div fxLayoutAlign="center" fxLayoutGap="24px">
+      <a
+        routerLink="/cadastro"
+        fxLayoutAlign="space-between center"
+        fxLayoutGap="8px"
+        class="inline-link"
+      >
+        <mat-icon fontIcon="feed" /> <span>Cadastro</span>
+      </a>
+      <a
+        routerLink="/consulta"
+        fxLayoutAlign="space-between center"
+        fxLayoutGap="8px"
+        class="inline-link"
+      >
+        <mat-icon fontIcon="search"></mat-icon>
+        <span>Consulta</span></a
+      >
+    </div>
+    <span class="spacer-right"></span>
+  </div>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
