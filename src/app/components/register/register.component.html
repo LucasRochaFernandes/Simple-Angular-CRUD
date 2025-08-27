@@ -1,0 +1,109 @@
+<div fxLayout="row" fxLayoutAlign="center">
+  <div fxLayout="column" fxFlex="1000px">
+    <form class="mt-60" #clientsFrm="ngForm" (ngSubmit)="onSaveClient()">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Dados Pessoais</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="mt-10">
+          <div fxLayout="row" fxLayoutAlign="start">
+            <div fxLayout="column" fxFlex="500px">
+              <mat-form-field
+                ><mat-label>Nome: *</mat-label>
+                <input
+                  type="text"
+                  [(ngModel)]="client.name"
+                  name="name"
+                  placeholder="Ex: José da Silva"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start">
+            <div fxLayout="column" fxFlex="500px">
+              <mat-form-field
+                ><mat-label>Email: *</mat-label>
+                <input
+                  type="text"
+                  name="email"
+                  [(ngModel)]="client.email"
+                  placeholder="Ex: josesilva@gmail.com"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start">
+            <div fxLayout="column" fxFlex="300px">
+              <mat-form-field
+                ><mat-label>CPF: *</mat-label>
+                <input
+                  type="text"
+                  name="cpf"
+                  placeholder=""
+                  matInput
+                  [(ngModel)]="client.cpf"
+                  mask="000.000.000-00"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start">
+            <div fxLayout="column" fxFlex="300px">
+              <mat-form-field
+                ><mat-label>UF: *</mat-label>
+                <mat-select (selectionChange)="loadMunicipalities($event)" [(value)]="client.uf"
+                  ><mat-option *ngFor="let uf of states" [value]="uf.sigla"
+                    >{{ uf.sigla }} - {{ uf.nome }}</mat-option
+                  ></mat-select
+                >
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start">
+            <div fxLayout="column" fxFlex="300px">
+              <mat-form-field
+                ><mat-label>Município: *</mat-label>
+                <mat-select [(value)]="client.municipality"
+                  ><mat-option *ngFor="let m of municipalities" [value]="m.nome">{{
+                    m.nome
+                  }}</mat-option></mat-select
+                >
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start">
+            <div fxLayout="column" fxFlex="300px">
+              <mat-form-field
+                ><mat-label>Data de Nascimento: *</mat-label>
+                <input
+                  type="text"
+                  name="dayOfBirth"
+                  placeholder="00/00/0000"
+                  matInput
+                  mask="00/00/0000"
+                  [(ngModel)]="client.dayOfBirth"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions class="w-full" fxLayoutGap="16px">
+          @if (isUpdate === false) {
+            <button mat-flat-button color="primary" type="submit">
+              <mat-icon fontIcon="save"></mat-icon> Salvar
+            </button>
+            <button mat-flat-button color="accent" type="button">
+              <mat-icon fontIcon="backspace"></mat-icon> Limpar
+            </button>
+          } @else {
+            <button mat-flat-button color="primary" type="submit">
+              <mat-icon fontIcon="save"></mat-icon> Atualizar
+            </button>
+          }
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>
